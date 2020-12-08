@@ -14,7 +14,7 @@ def main_2(numbers: List[int]):
             return a * b * c
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     inp = [
         1891,
         1975,

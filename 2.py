@@ -6,7 +6,7 @@ from typing import List
 def main_1(inp: List[str]):
     valid_passwords = 0
     for line in inp:
-        minimum, maximum, letter, word = re.search(r'(\d+)-(\d+) (\w): (\w+)', line).groups()
+        minimum, maximum, letter, word = re.search(r"(\d+)-(\d+) (\w): (\w+)", line).groups()
         c = Counter(word)
         if int(minimum) <= c[letter] <= int(maximum):
             valid_passwords += 1
@@ -16,7 +16,7 @@ def main_1(inp: List[str]):
 def main_2(inp: List[str]):
     valid_passwords = 0
     for line in inp:
-        pos1, pos2, letter, word = re.search(r'(\d+)-(\d+) (\w): (\w+)', line).groups()
+        pos1, pos2, letter, word = re.search(r"(\d+)-(\d+) (\w): (\w+)", line).groups()
         # positions are not zero indexed, fix it
         pos1 = int(pos1) - 1
         pos2 = int(pos2) - 1
@@ -26,8 +26,8 @@ def main_2(inp: List[str]):
     return valid_passwords
 
 
-if __name__ == '__main__':
-    with open('2.txt') as f:
+if __name__ == "__main__":
+    with open("2.txt") as f:
         inp = f.readlines()
     print(main_1(inp))
     print(main_2(inp))
