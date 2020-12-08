@@ -10,7 +10,7 @@ def main_2(inp: List[str]):
 
 
 if __name__ == '__main__':
-    with open('5.txt') as f:
+    with open('N.txt') as f:
         inp = f.readlines()
     print(main_1(inp))
     print(main_2(inp))
