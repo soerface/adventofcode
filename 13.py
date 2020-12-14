@@ -3,7 +3,7 @@ from typing import List
 
 def main_1(inp: List[str]):
     earliest = int(inp[0])
-    busses = [int(x) for x in inp[1].split(",") if x != "x"]
+    busses = [int(x) for x in inp[1].split(",") if "x" not in x]
     n = earliest
     l = []
     while not any(l):
@@ -14,7 +14,7 @@ def main_1(inp: List[str]):
 
 
 def main_2(inp: List[str]):
-    busses = [int(x) if x != "x" else 1 for x in inp[1].split(",")]
+    busses = [int(x) if "x" not in x else 1 for x in inp[1].split(",")]
     bus_orders = {b: i for i, b in enumerate(busses)}
     sorted_busses = sorted(busses, reverse=True)
     n = 1
