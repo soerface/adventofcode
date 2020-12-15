@@ -18,14 +18,10 @@ def main_1(inp: List[str]):
 def main_2(inp: List[str]):
     busses = [int(x) if "x" not in x else 1 for x in inp[1].split(",")]
     n = step_size = busses[0]
-    steps = 0
     for idx, b in enumerate(busses):
         while (n+idx) % b:
             n += step_size
-            steps += 1
         step_size = np.prod(busses[:idx+1])
-        print("step size now", step_size)
-    print("Steps:", steps)
     return n
 
 
