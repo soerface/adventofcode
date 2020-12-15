@@ -1,5 +1,7 @@
 from typing import List
 
+import numpy as np
+
 
 def main_1(inp: List[str]):
     earliest = int(inp[0])
@@ -15,29 +17,20 @@ def main_1(inp: List[str]):
 
 def main_2(inp: List[str]):
     busses = [int(x) if "x" not in x else 1 for x in inp[1].split(",")]
-    bus_orders = {b: i for i, b in enumerate(busses)}
-    sorted_busses = sorted(busses, reverse=True)
-    n = 1
+    n = step_size = busses[0]
     steps = 0
-    while True:
-        # if n % 10000000 == 0:
-        print(n)
-        ok = True
-        for b in sorted_busses:
-            i = bus_orders[b]
-            if (offset := (n + i) % b) != 0:
-                ok = False
-                n += b - offset
-                break
-        if ok:
-            break
-        steps += 1
+    for idx, b in enumerate(busses):
+        while (n+idx) % b:
+            n += step_size
+            steps += 1
+        step_size = np.prod(busses[:idx+1])
+        print("step size now", step_size)
     print("Steps:", steps)
     return n
 
 
 if __name__ == "__main__":
-    with open("13.example.txt") as f:
+    with open("13.txt") as f:
         inp = f.readlines()
     print(main_1(inp))
     print(main_2(inp))
