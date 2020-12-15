@@ -2,7 +2,7 @@ from typing import List
 
 
 def main(inp: List[int], to=2020):
-    last_occurence = {v: i+1 for i, v in enumerate(inp)}
+    last_occurence = {v: i+1 for i, v in enumerate(inp[:-1])}
     last_number = inp[-1]
     if to < len(inp):
         return inp[to]
