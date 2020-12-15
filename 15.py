@@ -1,25 +1,21 @@
 from typing import List
 
 
-def main_1(inp: List[int]):
-    l = inp.copy()
-    for i in range(len(l), 2020):
-        last_number = l[-1]
-        try:
-            last_occurence = len(l) - 1 - l[-2::-1].index(last_number)
-        except ValueError:
-            last_occurence = i
-        l.append(i - last_occurence)
-    return l[-1]
-
-
-def main_2(inp: List[str]):
-    return
+def main(inp: List[int], to=2020):
+    last_occurence = {v: i+1 for i, v in enumerate(inp)}
+    last_number = inp[-1]
+    if to < len(inp):
+        return inp[to]
+    for i in range(len(inp), to):
+        new_number = i - last_occurence.get(last_number, i)
+        last_occurence[last_number] = i
+        last_number = new_number
+    return new_number
 
 
 if __name__ == "__main__":
-    with open("15.examples.txt") as f:
+    with open("15.txt") as f:
         inp = f.readlines()
     for line in inp:
-        print(main_1([int(x) for x in line.split(",")]))
-    print(main_2(inp))
+        print(main([int(x) for x in line.split(",")], to=2020))
+        print(main([int(x) for x in line.split(",")], to=30000000))
