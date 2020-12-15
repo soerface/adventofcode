@@ -1,7 +1,5 @@
 from typing import List
 
-import numpy as np
-
 
 def main_1(inp: List[str]):
     earliest = int(inp[0])
@@ -17,11 +15,11 @@ def main_1(inp: List[str]):
 
 def main_2(inp: List[str]):
     busses = [int(x) if "x" not in x else 1 for x in inp[1].split(",")]
-    n = step_size = busses[0]
+    n = step_size = 1
     for idx, b in enumerate(busses):
         while (n+idx) % b:
             n += step_size
-        step_size = np.prod(busses[:idx+1])
+        step_size *= b
     return n
 
 
