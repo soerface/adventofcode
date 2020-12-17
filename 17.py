@@ -52,7 +52,7 @@ def main_1(inp: List[str]):
 
 def main_2(inp: List[str]):
     array = np.zeros(shape=(len(inp), len(inp), len(inp), len(inp)), dtype=int)
-    array[0] = [[x == "#" for x in l.strip()] for l in inp]
+    array[0][0] = [[x == "#" for x in l.strip()] for l in inp]
     array = np.pad(array, 1)
     for _ in range(6):
         array = np.pad(array, 1)
@@ -62,7 +62,7 @@ def main_2(inp: List[str]):
 
 
 if __name__ == "__main__":
-    with open("17.example.txt") as f:
+    with open("17.txt") as f:
         inp = f.readlines()
     print(main_1(inp))
     print(main_2(inp))
