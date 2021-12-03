@@ -9,12 +9,14 @@ def main_1(inp: List[str]):
 def main_2(inp: List[str]):
     return
 
+
 def run(input_file: Path):
     print(f"Running for {input_file.name}")
     with open(input_file) as f:
         inp = f.readlines()
     print(f"Task 1: {main_1(inp)}")
     print(f"Task 2: {main_2(inp)}")
+
 
 if __name__ == "__main__":
     example_file = Path(__file__).parent / "example.txt"
