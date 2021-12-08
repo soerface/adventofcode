@@ -39,8 +39,7 @@ func InputToIntList(inp []byte) []int {
 	j := 0
 	for i := 0; i < len(inp); i++ {
 		c := inp[i]
-		// 10 = newline
-		if c != 10 {
+		if c != '\n' {
 			str.WriteByte(c)
 		}
 		if c == 10 || i == len(inp)-1 {
