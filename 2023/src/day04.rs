@@ -30,16 +30,12 @@ fn count_cards(lines: String) -> u32 {
         let first_set = build_number_set(parts.0);
         let second_set = build_number_set(parts.1);
         let common_items = first_set.intersection(&second_set).count();
-        let mut sum = 0;
         let num_cards = *card_multiplier.get(&lineno).unwrap_or(&1);
-        for _ in 0..num_cards {
-            for n in 0..common_items {
-                let cur = card_multiplier.get(&(lineno + n + 1)).unwrap_or(&1);
-                card_multiplier.insert(lineno + n + 1, cur + 1);
-            }
-            sum += 1;
+        for n in 0..common_items {
+            let cur = card_multiplier.get(&(lineno + n + 1)).unwrap_or(&1);
+            card_multiplier.insert(lineno + n + 1, cur + num_cards);
         }
-        sum
+        num_cards
     }).sum()
 }
 
