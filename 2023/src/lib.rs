@@ -2,6 +2,7 @@ mod day01;
 mod day02;
 mod day03;
 mod day04;
+mod day05;
 
 pub use day01::stage1 as day01_stage1;
 pub use day01::stage2 as day01_stage2;
